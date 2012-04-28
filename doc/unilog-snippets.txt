@@ -1,0 +1,9 @@
+python manage.py runserver
+
+# -*- coding: utf-8 -*-
+
+python manage.py syncdb
+
+python manage.py sql <app_name>
+
+python manage.py shell

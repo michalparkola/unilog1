@@ -1,0 +1,34 @@
+2012-04-28
+* django-admin startproject unilog
+* following django tutorial: https://docs.djangoproject.com/en/1.4/intro/tutorial01/
+! failed to setup superuser for auth (unknown locale: utf-8)
+     solved: export LANG=LC_ALL="en_US.UTF-8"
+* created unilog_core django app
+* enabled a django admin interface to manage unilog_core data
+* configure site urls
+* created basic view
+* created a template-based view
+
+TODO create a repository for uni-log
+TODO create template-based details view
+TODO create a custom form view for adding log entries
+TODO tweak list-view to shorten entry.text
+
+
+Feature Backlog:
+     List view
+     Sort
+     Filter by tags
+     Filter by date
+     
+     Users
+     Hosting, Domena, Deploy
+     Calendar view
+     Timeline view
+
+Learning Django:
+     configuring django urls with regular expressions
+     templates
+
+Learning Python:
+     play with the debugger
