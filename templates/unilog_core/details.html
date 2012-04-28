@@ -1,0 +1,8 @@
+<h1>Date</h1>
+{{entry.date}}
+<h1>Tags</h1>
+{% for tag in entry.tags.all %}
+     {{ tag.name }}
+{% endfor %}
+<h1>Text</h1>
+{{ entry.text }}

@@ -8,9 +8,12 @@
 * configure site urls
 * created basic view
 * created a template-based view
+* created a mercurial repository for uni-log
+(commit, revision:0)
+* created template-based details view
 
-TODO create a repository for uni-log
-TODO create template-based details view
+
+TODO 
 TODO create a custom form view for adding log entries
 TODO tweak list-view to shorten entry.text
 
@@ -31,4 +34,5 @@ Learning Django:
      templates
 
 Learning Python:
-     play with the debugger
+     debugger
+     exceptions
