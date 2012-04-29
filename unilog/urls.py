@@ -4,11 +4,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
-
-    url(r'^unilog/$','unilog_core.views.index'),
-    url(r'^unilog/(?P<entry_id>\d+)/$', 'unilog_core.views.detail'),
-
+urlpatterns = patterns(
+    '',
     # Examples:
     # url(r'^$', 'unilog.views.home', name='home'),
     # url(r'^unilog/', include('unilog.foo.urls')),
@@ -18,4 +15,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^unilog/', include('unilog_core.urls')),
 )
+
