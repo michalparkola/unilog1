@@ -1,5 +1,11 @@
 <title>UniLog Index</title>
 
+<h1>Tags</h1>
+{% for tag in tags %}
+    {{tag.name}}
+{% endfor %}
+
+<h1>Log Entries</h1>
 {% if entries %}
 <table border=1>
 {% for entry in entries %}

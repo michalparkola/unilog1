@@ -8,13 +8,13 @@ from django.conf.urls import patterns, include, url
 
 from django.views.generic import ListView, DetailView
 from unilog_core.models import LogEntry
+from unilog_core.views import LogEntriesListView
 
 urlpatterns = patterns(
     '',
     url(r'^$',
-        ListView.as_view(
+        LogEntriesListView.as_view(
             queryset = LogEntry.objects.order_by('-date'),
-            context_object_name='entries',
             template_name='unilog_core/index.html'
         )
     ),
