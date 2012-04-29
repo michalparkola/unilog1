@@ -11,28 +11,7 @@
 * created a mercurial repository for uni-log
 (commit, revision:0)
 * created template-based details view
+* use django shortcuts render_to_response and get_object_or_404 to shorten views
 
-
-TODO 
-TODO create a custom form view for adding log entries
-TODO tweak list-view to shorten entry.text
-
-
-Feature Backlog:
-     List view
-     Sort
-     Filter by tags
-     Filter by date
-     
-     Users
-     Hosting, Domena, Deploy
-     Calendar view
-     Timeline view
-
-Learning Django:
-     configuring django urls with regular expressions
-     templates
-
-Learning Python:
-     debugger
-     exceptions
+2012-04-29
+* 
