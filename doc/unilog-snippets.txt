@@ -1,9 +1,11 @@
-python manage.py runserver
-
 # -*- coding: utf-8 -*-
 
-python manage.py syncdb
+manage.py:
+     python manage.py runserver
+     python manage.py syncdb
+     python manage.py shell
 
-python manage.py sql <app_name>
-
-python manage.py shell
+django.shortcuts:
+     render_to_response()
+     get_list_or_404()
+     get_object_or_404()
