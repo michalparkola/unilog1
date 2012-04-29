@@ -8,7 +8,7 @@ from django.conf.urls import patterns, include, url
 
 from django.views.generic import ListView, DetailView
 from unilog_core.models import LogEntry
-from unilog_core.views import LogEntriesListView
+from unilog_core.views import LogEntriesListView, TaggedEntriesListView
 
 urlpatterns = patterns(
     '',
@@ -24,5 +24,10 @@ urlpatterns = patterns(
             context_object_name='entry',
             template_name='unilog_core/details.html'
         )
-    )
+    ),
+    url(r'^(\w+)/$',
+        TaggedEntriesListView.as_view(
+            template_name='unilog_core/index.html'
+        )
+    ),
 )

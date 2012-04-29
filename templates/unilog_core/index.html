@@ -1,8 +1,9 @@
 <title>UniLog Index</title>
 
 <h1>Tags</h1>
+<a href="http://localhost:8000/unilog/">ALL</a>
 {% for tag in tags %}
-    {{tag.name}}
+    <a href="http://localhost:8000/unilog/{{tag.name}}">{{tag.name}}</a>
 {% endfor %}
 
 <h1>Log Entries</h1>
@@ -22,7 +23,7 @@
         {{ entry.text|truncatechars:100 }}
     </td>
     <td>
-        <a href="{{entry.id}}/">Details</a>
+        <a href="http://localhost:8000/unilog/{{entry.id}}/">Details</a>
     </td>
 </tr>
 {% endfor %}
