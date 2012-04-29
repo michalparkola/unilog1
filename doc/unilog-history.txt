@@ -14,4 +14,16 @@
 * use django shortcuts render_to_response and get_object_or_404 to shorten views
 
 2012-04-29
-* 
+* Configure Mercurial to ignore all .pyc files
+* Created a bare-bones 404 page to be used when DEBUG=False
+* Moved URLconf to unilog_core djago app and included it from the site URLconf
+* Truncated entry.text in list view (index)
+* Added titles to views
+* Switched to generic views
+     https://docs.djangoproject.com/en/dev/topics/class-based-views/
+* Extended ListView to add Tags to context
+* Added tags to index view template
+* Added filtering by tag name to list view:
+     * Subclassed LogEntriesListView to support filtering
+     * Added links to the list of tags in list view template
+     * Added new URLconf pattern for the filtered view
