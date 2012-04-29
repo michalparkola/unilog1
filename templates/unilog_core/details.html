@@ -1,7 +1,7 @@
 <title>UniLog Entry Details</title>
     
 <h1>Date</h1>
-{{entry.date}}
+{{entry.date|date:"Y-m-d D H:i"}}
 <h1>Tags</h1>
 {% for tag in entry.tags.all %}
      {{ tag.name }}
