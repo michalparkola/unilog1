@@ -16,18 +16,21 @@ urlpatterns = patterns(
         LogEntriesListView.as_view(
             queryset = LogEntry.objects.order_by('-date'),
             template_name='unilog_core/index.html'
-        )
+        ),
+        name="all-entries",
     ),
     url(r'^(?P<pk>\d+)/$',
         DetailView.as_view(
             model=LogEntry,
             context_object_name='entry',
             template_name='unilog_core/details.html'
-        )
+        ),
+        name="entry-details",
     ),
-    url(r'^(\w+)/$',
+    url(r'^([\-\w]+)/$',
         TaggedEntriesListView.as_view(
             template_name='unilog_core/index.html'
-        )
+        ),
+        name="entries-filtered-by-tag",
     ),
 )

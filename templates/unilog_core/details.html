@@ -1,5 +1,14 @@
+{% load staticfiles %}
+
+<html>
+<head>   
 <title>UniLog Entry Details</title>
+<link rel="stylesheet" type="text/css" href="{% static "styles/unilog.css" %}" />
+</head>
+<body>
     
+<a href="{% url all-entries %}">ALL</a>
+
 <h1>Date</h1>
 {{entry.date|date:"Y-m-d D H:i"}}
 <h1>Tags</h1>

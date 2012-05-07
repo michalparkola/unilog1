@@ -1,9 +1,19 @@
+{% load staticfiles %}
+
+<html>
+<head>   
 <title>UniLog Index</title>
+<link rel="stylesheet" type="text/css" href="{% static "styles/unilog.css" %}" />
+</head>
+<body>
+
+<a href="{% url admin:unilog_core_logentry_add %}">ADD</a>
+
 
 <h1>Tags</h1>
-<a href="http://localhost:8000/unilog/">ALL</a>
+<a href="{% url all-entries %}">ALL</a>
 {% for tag in tags %}
-    <a href="http://localhost:8000/unilog/{{tag.name}}">{{tag.name}}</a>
+    <a href="{% url entries-filtered-by-tag tag.name %}">{{tag.name}}</a>
 {% endfor %}
 
 <h1>Log Entries</h1>
@@ -16,18 +26,17 @@
             {{ tag.name }}
         {% endfor %}
     </td>
-    <td>
-         {{ entry.date|date:"Y-m-d D H:i" }}
-    </td>
-    <td >
-        {{ entry.text|truncatechars:100 }}
-    </td>
-    <td>
-        <a href="http://localhost:8000/unilog/{{entry.id}}/">Details</a>
-    </td>
+    <td>{{ entry.date|date:"Y-m-d" }}</td>
+    <td>{{ entry.date|date:"D" }}</td>
+    <td>{{ entry.date|date:"H:i" }}</td>
+    <td>{{ entry.text|truncatechars:80 }}</td>
+    <td><a href="{% url entry-details entry.id %}">Details</a></td>
 </tr>
 {% endfor %}
 </table>
 {% else %}
 <p>No entries available!</p>
 {% endif %}
+
+</body>
+</html>
