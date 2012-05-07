@@ -19,7 +19,8 @@ class LogEntriesListView(ListView):
         context = super(LogEntriesListView, self).get_context_data(**kwargs)
         context['tags'] = Tag.objects.all()
         return context
-        
+
 class TaggedEntriesListView(LogEntriesListView):
     def get_queryset(self):
-        return LogEntry.objects.filter(tags__name__contains=self.args[0])
+        queryset = LogEntry.objects.filter(tags__name__contains=self.args[0])
+        return queryset.order_by('-date')
