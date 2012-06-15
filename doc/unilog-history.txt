@@ -27,3 +27,5 @@
      * Subclassed LogEntriesListView to support filtering
      * Added links to the list of tags in list view template
      * Added new URLconf pattern for the filtered view
+
+[more history in Mercurial repo]
