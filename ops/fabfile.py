@@ -2,6 +2,8 @@ from datetime import datetime
 from fabric.api import env, run, local, cd
 from fabric.operations import get
 
+import urllib2
+
 env.hosts = ['ssh.alwaysdata.com']
 env.user = "unilog"
 env.password = "br23dx"
@@ -9,21 +11,48 @@ env.password = "br23dx"
 now = datetime.today().strftime("%Y-%m-%d_%H.%M")
 today = datetime.today().strftime("%Y-%m-%d")
 
-backup_dir = ''
-
 def backup_db():
     get('/home/unilog/unilog/db/unilog.db')
-    backup_filename = backup_dir + now + "_unilog.db"
+    backup_filename = now + "_unilog.db"
     local('mv ssh.alwaysdata.com/unilog.db ' + backup_filename)
     
-def backup_all():
+def backup():
     tar_name = now + "_unilog.tgz"
     with cd('/home/unilog/'):
-        run ("tar czf " + tar_name + " unilog")
+        run("tar czf " + tar_name + " unilog")
         get('/home/unilog/' + tar_name)
-        run ("rm " + tar_name)
+        run("rm " + tar_name)
+    local('mv ssh.alwaysdata.com/* .')
+    local('rmdir ssh.alwaysdata.com')
     
-def clone_repo():
+def pull_from_bitbucket():
+    repo_url = 'https://vertigo@bitbucket.org/vertigo/uni-log'
     with cd('/home/unilog/'):
-        repo_url = 'https://vertigo@bitbucket.org/vertigo/uni-log'
-        run ("hg clone " + repo_url + " " + now + "_unilog.hg")
+        run("hg clone " + repo_url)
+        run("cp -r uni-log/* unilog")
+        run("rm -rf uni-log")
+
+def collectstatic():  
+    with cd('/home/unilog/'):
+        run("python manage.py collectstatic")
+
+def change_app_root():
+    before = "/Users/vertigo/Developer/Unilog/"
+    after = "/home/unilog/unilog/"
+    with cd('/home/unilog/unilog/unilog/'):
+        run("cp settings.py old-settings.py")
+        run("sed 's:" + before + ":" + after + ":' <old-settings.py >settings.py")  
+        run("rm old-settings.py")
+
+def restart_fcgi():
+    urllib2.urlopen("https://admin.alwaysdata.com/advanced/processes/restart/")
+
+def deploy():
+    backup_db()
+    backup()
+    pull_from_bitbucket()
+    collectstatic()
+    change_app_root()
+    # TODO: syncdb
+    # TODO: migratedb
+    restart_fcgi()
