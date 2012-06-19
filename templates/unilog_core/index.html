@@ -9,16 +9,17 @@
 
 <a href="{% url admin:unilog_core_logentry_add %}">ADD</a>
 
-
 <h1>Tags</h1>
+<p class="center">
 <a href="{% url all-entries %}">ALL</a>
 {% for tag in tags %}
     <a href="{% url entries-filtered-by-tag tag.name %}">{{tag.name}}</a>
 {% endfor %}
+</p>
 
 <h1>Log Entries</h1>
 {% if entries %}
-<table border=1>
+<table>
 {% for entry in entries %}
 <tr>
     <td width=150>

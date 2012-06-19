@@ -1,3 +1,23 @@
 body {
-    background-color: skyblue;
+    background-color: rgb(237,237,237);
+    font-family: sans-serif;
+    font-size: 80%;
+}
+
+.center {
+    text-align: center;
+}
+
+table {
+    border-collapse:collapse;
+    font-size: 100%;
+    margin:auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+td {
+    padding: 4px;
 }

@@ -1,4 +1,4 @@
-APP_ROOT = '/Users/vertigo/Dropbox/Unilog/'
+APP_ROOT = '/Users/vertigo/Developer/Unilog/'
 
 # Django settings for unilog project.
 
