@@ -11,3 +11,6 @@ class LogEntry(models.Model):
     text = models.CharField(max_length=500)
     def __unicode__(self):
         return self.text
+    
+    class Meta:
+        ordering = ["-date"]
