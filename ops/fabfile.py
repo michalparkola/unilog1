@@ -15,6 +15,7 @@ def backup_db():
     get('/home/unilog/unilog/db/unilog.db')
     backup_filename = now + "_unilog.db"
     local('mv ssh.alwaysdata.com/unilog.db ' + backup_filename)
+    local('rm ssh.alwaysdata.com')
     
 def backup():
     tar_name = now + "_unilog.tgz"
@@ -33,7 +34,7 @@ def pull_from_bitbucket():
         run("rm -rf uni-log")
 
 def collectstatic():  
-    with cd('/home/unilog/'):
+    with cd('/home/unilog/unilog'):
         run("python manage.py collectstatic")
 
 def change_app_root():
@@ -51,8 +52,8 @@ def deploy():
     backup_db()
     backup()
     pull_from_bitbucket()
-    collectstatic()
     change_app_root()
+    collectstatic()
     # TODO: syncdb
     # TODO: migratedb
     restart_fcgi()
