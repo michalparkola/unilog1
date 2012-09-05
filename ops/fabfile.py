@@ -15,7 +15,7 @@ def backup_db():
     get('/home/unilog/unilog/db/unilog.db')
     backup_filename = now + "_unilog.db"
     local('mv ssh.alwaysdata.com/unilog.db ' + backup_filename)
-    local('rm ssh.alwaysdata.com')
+    local('rmdir ssh.alwaysdata.com')
     
 def backup():
     tar_name = now + "_unilog.tgz"
