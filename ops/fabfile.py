@@ -48,16 +48,21 @@ def change_app_root():
         run("sed 's:" + before + ":" + after + ":' <old-settings.py >settings.py")  
         run("rm old-settings.py")
 
+def disable_south():
+    with cd('/home/unilog/unilog/unilog/'):
+        run("cp settings.py old-settings.py")
+        run("""sed "s:'south',:# 'south',:" <old-settings.py >settings.py""")  
+        run("rm old-settings.py")
+
 def restart_fcgi():
     urllib2.urlopen("https://admin.alwaysdata.com/advanced/processes/restart/")
-
-
 
 def deploy():
     backup_db()
     backup()
     pull_from_bitbucket()
     change_app_root()
+    disable_south()
     collectstatic()
     # TODO: syncdb
     # TODO: migratedb
