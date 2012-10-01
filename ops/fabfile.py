@@ -1,6 +1,6 @@
 from datetime import datetime
 from fabric.api import env, run, local, cd
-from fabric.operations import get
+from fabric.operations import get, put
 
 import urllib2
 
@@ -8,7 +8,7 @@ env.hosts = ['ssh.alwaysdata.com']
 env.user = "unilog"
 env.password = "br23dx"
 
-now = datetime.today().strftime("%Y-%m-%d_%H.%M")
+now = datetime.today().strftime("%Y-%m-%d_%H-%M")
 today = datetime.today().strftime("%Y-%m-%d")
 
 def backup_db():
@@ -16,7 +16,10 @@ def backup_db():
     backup_filename = now + "_unilog.db"
     local('mv ssh.alwaysdata.com/unilog.db ' + backup_filename)
     local('rmdir ssh.alwaysdata.com')
-    
+
+def overwrite_remote_db():
+    put('/Users/vertigo/Developer/Unilog/db/unilog.db', '/home/unilog/unilog/db/unilog.db')
+
 def backup():
     tar_name = now + "_unilog.tgz"
     with cd('/home/unilog/'):
@@ -47,6 +50,8 @@ def change_app_root():
 
 def restart_fcgi():
     urllib2.urlopen("https://admin.alwaysdata.com/advanced/processes/restart/")
+
+
 
 def deploy():
     backup_db()
