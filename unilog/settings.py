@@ -67,6 +67,9 @@ STATIC_ROOT = APP_ROOT + 'public/static'
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/unilog/'
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
