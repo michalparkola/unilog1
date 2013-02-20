@@ -16,7 +16,12 @@ from django.views.generic import ListView
 class LogEntriesListView(ListView):
     context_object_name = "entries"
     model = LogEntry
-    
+
+    def get_queryset(self):
+        queryset = LogEntry.objects.filter(user=self.request.user)
+        print self.request.user
+        return queryset.order_by('-date')
+            
     def get_context_data(self, **kwargs):
         context = super(LogEntriesListView, self).get_context_data(**kwargs)
         context['tags'] = Tag.objects.all()
@@ -29,6 +34,7 @@ class LogEntriesListView(ListView):
 class TaggedEntriesListView(LogEntriesListView):
     def get_queryset(self):
         queryset = LogEntry.objects.filter(tags__name__contains=self.args[0])
+        queryset = queryset.filter(user=self.request.user)
         return queryset.order_by('-date')
         
     @method_decorator(login_required)
