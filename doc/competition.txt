@@ -1,0 +1,24 @@
+(Mac/iOS) Day One
+(iOS) Memento
+(Web) Daytum (http://daytum.com/)
+
+(iOS) Saga
+  !! automatic location logging
+  http://www.getsaga.com/
+
+(iOS) Lift
+  http://lift.do/
+  
+Lucid Tracker
+  Close to unilog.me
+  !! Dead
+  http://www.lucidtracker.com/
+
+Facebook
+Foursquare
+
+Google Health
+Mint
+Kontomierz
+RunKeeper
+Evernote
