@@ -8,9 +8,8 @@ class Tag(models.Model):
 
 class LogEntry(models.Model):
     date = models.DateTimeField('Date and time of log entry')
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank = True)
     text = models.TextField()
-    #user = models.CharField(max_length=50)
     user = models.ForeignKey(User, related_name='author')
 
     def __unicode__(self):
