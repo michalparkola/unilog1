@@ -1,4 +1,4 @@
-APP_ROOT = '/Users/vertigo/Developer/Unilog/'
+APP_ROOT = '/Users/vertigo/Dropbox/Hacking/PycharmProjects/unilog-django/'
 
 # Django settings for unilog project.
 
@@ -115,7 +115,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    APP_ROOT + 'templates'
+    APP_ROOT + 'templates',
 )
 
 INSTALLED_APPS = (
