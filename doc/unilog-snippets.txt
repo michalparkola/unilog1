@@ -9,3 +9,6 @@ django.shortcuts:
      render_to_response()
      get_list_or_404()
      get_object_or_404()
+
+unilog-django/unilog/settings.py
+     APP_ROOT =
