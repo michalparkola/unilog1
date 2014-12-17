@@ -1,5 +1,0 @@
-syntax: glob
-
-*.pyc
-doc/logbook-small.jpg
-doc/logbook.jpg
